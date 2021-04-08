@@ -6,6 +6,7 @@ azul shadow: #1c2a3f;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
 }
 
 header{
@@ -22,6 +23,10 @@ footer{
     /* background: #494c50; */
     padding: 40px 0px;
     /* font-size: 14px; */
+}
+
+h1, h2, h3, h4, h5{
+    font-weight: bold;
 }
 
 .character-box{
@@ -86,6 +91,17 @@ footer{
 
 .logo-footer{
     float: right;
+}
+
+#btnSearch{
+    background-color: #fff; 
+    border-bottom-left-radius: 0%; 
+    border-top-left-radius: 0%; 
+}
+
+#searchInput{
+    border-bottom-right-radius: 0%; 
+    border-top-right-radius: 0%; 
 }
 
 .hidden{
@@ -162,16 +178,27 @@ footer{
 }
 
 #titleSection{
-    margin: 20px 0 10px;
+    margin: 40px 0 40px;
     text-align: center;
     display: block;
+    border-bottom: 2px solid #e62429;
+    border-top: 2px solid #e62429;
+
 }
 
 .hidden-md{
     visibility: hidden;
 }
 
+.ext-links{
+
+}
+
 @media only screen and (max-width: 768px){
+    #spinner{
+        left: 44.5%;
+    }
+
     .logo{
         /* margin: 0 auto; */
         height: auto;
@@ -182,6 +209,12 @@ footer{
 
     .character-box{
         margin: 5%;
+        min-height: unset;
+        max-height: unset;
+    }
+
+    .img-responsive{
+        max-height: 300px;
     }
 
     .character-info{

@@ -38,6 +38,10 @@ let marvelData = {
                     renderView.renderDetails(json.data);
                     console.log(json.data, 'Detalles')
                 }
+                //si hay favoritos los traemos
+                // else if (window.location.pathname.includes('favourites.html')) {
+                //     renderView.renderFavs(json.data)
+                // };
             })
 
     },

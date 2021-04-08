@@ -1,13 +1,9 @@
+//usamos el localStorage para guardar los favoritos
+localStorage.getItem("favs") === null && localStorage.setItem("favs", "[]");
 //armamos la vista
 let home = {
     //status de la home
-    status: {
-        page: 1,
-        rows: 30,
-        window: 5,
-        selectedId: '',
-    },
-
+    
     //obtenemos los elementos del DOM
     paginationDiv: document.getElementById('pagination'),
     characterBox: document.getElementById("marvel-characters"),
@@ -18,10 +14,16 @@ let home = {
     titleSection: document.getElementById('titleSection'),
     spinner: document.getElementById('spinner'),
     spinnerBack: document.getElementById('spinnerBack'),
+    status: {
+        page: 1,
+        rows: 30,
+        window: 5,
+        selectedId: '',
+    },
     
     //función de búsqueda
     searchCharacter(e) {
-        if (e.keyCode === 13) {
+        if (e.keyCode === 13 || e.type === "click") {
             e.preventDefault();
             this.titleSection.innerHTML = `Resultado de búsqueda`
             this.characterBox.innerHTML = ''
@@ -89,6 +91,8 @@ let home = {
 
     //armamos el detalle de personajes
     setDetails(id ,name, desc, img, extension, urls, comics) {
+        spinnerBack.classList.remove('hidden');
+        spinner.classList.remove('hidden');
         let divDescription = document.createElement('div');
         divDescription.setAttribute("class", "col-md-8")
 
@@ -111,17 +115,21 @@ let home = {
         }
         //si tiene links los imprimimos
         if (urls.length > 0) {
-            divImage.innerHTML += `<div class="card-text"><h4>Links</h4></div>`
+            divImage.innerHTML += `<div class="card-text"><h4>Links relacionados</h4></div>`
 
             urls.forEach(el => {
-                divImage.innerHTML += `
-                <a href="${el.url}" target="_blank" class="">${el.type}</a>`
+                if (el.type != '') {
+                    divImage.innerHTML += `<a href="${el.url}" target="_blank" class="ext-links">${el.type}</a>`
+
+                }
             })
         }
-
-        divDescription.appendChild(divImage)
-        this.containerInfo.appendChild(divDescription)
+        divDescription.appendChild(divImage);
+        this.containerInfo.appendChild(divDescription);
+        spinner.classList.add('hidden');
+        spinnerBack.classList.add('hidden');
     },
+    
 }
 
 //eventos
