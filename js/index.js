@@ -16,6 +16,8 @@ let home = {
     header: document.getElementById('marvel-app'),
     containerInfo: document.getElementById('character-info'),
     titleSection: document.getElementById('titleSection'),
+    spinner: document.getElementById('spinner'),
+    spinnerBack: document.getElementById('spinnerBack'),
     
     //función de búsqueda
     searchCharacter(e) {
@@ -67,8 +69,10 @@ let home = {
     
     //armamos el listado de personajes
     setList(img, ext, name, id) {
+        spinnerBack.classList.remove('hidden');
+        spinner.classList.remove('hidden');
         let div = document.createElement('div');
-        div.setAttribute("class", "col-md-2")
+        div.setAttribute("class", "col-md-2");
         // div.setAttribute('id', 'character')
         div.innerHTML =
         `<div class="character-box" id="${id}" onclick="renderView.getId(this.id)">
@@ -78,11 +82,13 @@ let home = {
             </div>
         </div>`
 
-        this.characterBox.appendChild(div)
+        this.characterBox.appendChild(div);
+        spinner.classList.add('hidden') ;
+        spinnerBack.classList.add('hidden');
     },
 
     //armamos el detalle de personajes
-    setDetails(name, desc, img, extension, urls, comics) {
+    setDetails(id ,name, desc, img, extension, urls, comics) {
         let divDescription = document.createElement('div');
         divDescription.setAttribute("class", "col-md-8")
 
@@ -91,7 +97,7 @@ let home = {
 
         this.containerInfo.innerHTML = `
         <div class="col-md-4">
-            <img src="${img}.${extension}" class="card-img" alt="${name}">
+            <img src="${img}.${extension}" class="card-img" character-id="${id}" alt="${name}">
         </div>`
 
         divImage.innerHTML = `<h2 class="card-title">${name}</h2>`

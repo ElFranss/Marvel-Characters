@@ -22,7 +22,7 @@ let renderView = {
         
         console.log(characterInfo.results[0].comics.items[0].name);
 
-        home.setDetails(characterInfo.results[0].name, characterInfo.results[0].description, characterInfo.results[0].thumbnail.path, characterInfo.results[0].thumbnail.extension, characterInfo.results[0].urls);
+        home.setDetails(characterInfo.results[0].id, characterInfo.results[0].name, characterInfo.results[0].description, characterInfo.results[0].thumbnail.path, characterInfo.results[0].thumbnail.extension, characterInfo.results[0].urls);
         home.paginationBtn('')
     },
 }

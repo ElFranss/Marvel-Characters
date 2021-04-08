@@ -12,6 +12,9 @@
 </head>
 
 <body onload="marvelData.fetchData();">
+    <div id="spinnerBack">
+        <div id="spinner"></div>
+    </div>
     <header id="marvel-app">
         <nav class="navbar navbar-expand-lg navbar-light ">
             <div class="container">
@@ -26,7 +29,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item" style="padding-left: 25%">
-                            <a class="nav-link active favs-header" aria-current="page" href="#favourites.html">Favoritos</a>
+                            <a class="nav-link active favs-header" aria-current="page" href="favourites.html">Favoritos</a>
                         </li>
                     </ul>
                     <form class="d-flex form-inline">
@@ -40,7 +43,8 @@
         </nav>
     </header>
 
-    <div class="container">
+    
+    <div class="container" >
         <h2 id="titleSection" class="" style="padding: 10px 0;">Listado de personajes</h2>
         <div class="row" id="marvel-characters"></div>
         <div id="pagination" class="pagination-group"></div>
@@ -55,7 +59,6 @@
                 </a>
             </div>
         </div>
-        <!-- <div class="spinner"></div> -->
     </footer>
 
     <script src="js/connection.js"></script>
