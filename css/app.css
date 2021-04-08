@@ -8,6 +8,9 @@ azul shadow: #1c2a3f;
 	box-sizing: border-box;
     font-family: 'Raleway', sans-serif;
 }
+html{
+    scroll-behavior: smooth;
+}
 
 header{
     background-color: #0b1625;
