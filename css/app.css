@@ -277,4 +277,8 @@ h1, h2, h3, h4, h5{
     .ext-links, .related-links, .bottom-buttons{
         text-align: center;
     }
+
+    .banner-home{
+        margin-top: 3%;
+    }
 }
