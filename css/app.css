@@ -28,6 +28,12 @@ footer{
 h1, h2, h3, h4, h5{
     font-weight: bold;
 }
+.banner-home{
+    height: auto;
+    width: 100%;
+    display: block;
+    position: relative;
+}
 
 .character-box{
     min-height: 320px;
@@ -121,6 +127,10 @@ h1, h2, h3, h4, h5{
     min-height: 54.72px;
     display: flex;
     align-items: center;
+}
+
+#removeFav{
+    margin: 1% 0;
 }
 
 #spinnerBack{
