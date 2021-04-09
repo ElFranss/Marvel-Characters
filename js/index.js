@@ -119,15 +119,11 @@ let home = {
         //si tiene links los imprimimos
         if (urls.length > 0) {
             divImage.innerHTML += `<div class="card-text"><h4>Links relacionados</h4></div>`
-            // divLinks.innerHTML += `<div class="row">`
             urls.forEach(el => {
-                // if (el.type != '') {
                     divLinks.innerHTML += `
                         <div class="col-md-4">
                             <a href="${el.url}" target="_blank" class="btn btn-page back-home ext-link">${el.type}</a>
                     <div>`
-
-                // }
             })
         }
         divDescription.appendChild(divImage);
