@@ -3,9 +3,6 @@ localStorage.getItem("favs") === null && localStorage.setItem("favs", "[]");
 sessionStorage.setItem("offset", 0);
 //armamos la vista
 let home = {
-    //status de la home
-    
-    //obtenemos los elementos del DOM
     paginationDiv: document.getElementById('pagination'),
     characterBox: document.getElementById("marvel-characters"),
     searchInput: document.getElementById('searchInput'),
@@ -15,6 +12,9 @@ let home = {
     titleSection: document.getElementById('titleSection'),
     spinner: document.getElementById('spinner'),
     spinnerBack: document.getElementById('spinnerBack'),
+    clickSearch: document.getElementById('btnSearch').addEventListener("click", function () {
+        console.log('click');
+    }),
     status: {
         page: 1,
         rows: 30,
@@ -23,8 +23,22 @@ let home = {
     },
     
     //función de búsqueda
-    searchCharacter(e) {
-        if (e.keyCode === 13 || e.type === "click") {
+    searchCharacter(e, clickSearch) {
+        if (e.keyCode === 13) {
+            e.preventDefault();
+            this.titleSection.innerHTML = `Resultado de búsqueda`
+            this.characterBox.innerHTML = ''
+            marvelData.fetchData();
+            this.searchInput.value = ''
+            this.paginationDiv.innerHTML = ''
+        }
+    },
+
+    searchCharacterClick(e, clickSearch) {
+        if(clickSearch === undefined){
+            clickSearch = true;
+        }
+        if (clickSearch !== false) {
             e.preventDefault();
             this.titleSection.innerHTML = `Resultado de búsqueda`
             this.characterBox.innerHTML = ''
@@ -134,14 +148,11 @@ let home = {
     
 }
 
-//eventos
-// home.searchBtn.addEventListener('click', () => {
-//     location.href = './index.html'
-//     home.characterBox.innerHTML = ''
-//     marvelData.fetchData();
-//     home.searchInput.value = ''
-//     home.paginationDiv.innerHTML = ''
-// });
+home.searchBtn.addEventListener('keyUp', (e) => {
+    if(e.keyCode === 13){
+        home.searchCharacter();
+    }
+});
 
 home.paginationDiv.addEventListener('click', (e) => {
     home.characterBox.innerHTML = ''

@@ -25,7 +25,7 @@
                     <img src="img/logo-marvel.png" class="logo" />
                 </a>
                 
-                <div class=" navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item" style="padding-left: 25%">
                             <a class="nav-link active favs-header" aria-current="page" href="favourites.html">Favoritos</a>
@@ -33,8 +33,8 @@
                     </ul>
                     <form class="d-flex form-inline">
                         <!-- <form class="form-inline input-group pull-right"> -->
-                            <input type="text" id="searchInput" placeholder="Ingrese el personaje" class="form-control pull-right" onkeydown="home.searchCharacter(event)"/>
-                            <span class="btn pull-right" id="btnSearch" onclick="home.searchCharacter()">
+                            <input type="search" id="searchInput" placeholder="Ingrese el personaje" class="form-control pull-right" onkeypress="home.searchCharacter(event)"/>
+                            <span class="btn pull-right" id="btnSearch" onclick="home.searchCharacterClick(event)">
                                 <i class="fa fa-search" ></i>
                             </span>
                         <!-- </form> -->
