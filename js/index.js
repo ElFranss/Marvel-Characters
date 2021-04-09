@@ -109,12 +109,10 @@ let home = {
         spinnerBack.classList.remove('hidden');
         spinner.classList.remove('hidden');
         let divDescription = document.createElement('div');
-        divDescription.setAttribute("class", "col-md-8")
+        divDescription.setAttribute("class", "col-md-8");
 
         let divImage = document.createElement('div');
-        let divLinks = document.createElement('div');
-        divImage.setAttribute("class", "card-body")
-        divLinks.setAttribute("class", "row")
+        divImage.setAttribute("class", "card-body");
 
         this.containerInfo.innerHTML = `
         <div class="col-md-4">
@@ -132,10 +130,10 @@ let home = {
         }
         //si tiene links los imprimimos
         if (urls.length > 0) {
-            divImage.innerHTML += `<div class="card-text"><h4>Links relacionados</h4></div>`
+            divImage.innerHTML += `<div class="card-text related-links"><h4>Links relacionados</h4></div>`
             urls.forEach(el => {
-                    divLinks.innerHTML += `
-                        <div class="col-md-4">
+                divImage.innerHTML += `
+                        <div class="col-md-4 ext-links">
                             <a href="${el.url}" target="_blank" class="btn btn-page back-home ext-link">${el.type}</a>
                     <div>`
             })

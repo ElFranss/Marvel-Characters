@@ -20,7 +20,7 @@ let renderView = {
     renderDetails(characterInfo) {
         home.containerInfo.innerHTML = '';
         
-        console.log(characterInfo.results[0].resourceURI);
+        console.log(characterInfo.results[0].urls);
 
         home.setDetails(characterInfo.results[0].id, characterInfo.results[0].name, characterInfo.results[0].description, characterInfo.results[0].thumbnail.path, characterInfo.results[0].thumbnail.extension, characterInfo.results[0].urls);
         home.paginationBtn('');
