@@ -24,24 +24,20 @@ let marvelData = {
         fetch(url)
             .then((res) => res.json())
             .then((json) => {
-                //si no hay datos mostramos un mensaje
-                if (json.data.results.length == 0) {
-                    alert("Your search didn't match any result, please try with a different word");
-                }
                 //si hay datos y estamos en el index traemos los personajes y armamos el listado
-                else if (window.location.pathname.includes('index.html')) {
+                if (window.location.pathname.includes('index.html')) {
                     renderView.renderList(json.data);
-                    console.log(json.data, 'Index')
+                    // console.log(json.data, 'Index')
                 }
                 //si hay datos y estamos en el detalle traemos los personajes y armamos el detalle
                 else if (window.location.pathname.includes('character-details.html')) {
                     renderView.renderDetails(json.data);
-                    console.log(json.data, 'Detalles')
+                    // console.log(json.data, 'Detalles')
                 }
                 //si hay favoritos los traemos
-                // else if (window.location.pathname.includes('favourites.html')) {
-                //     renderView.renderFavs(json.data)
-                // };
+                else if (window.location.pathname.includes('favourites.html')) {
+                    renderView.renderFavs(json.data)
+                };
             })
 
     },

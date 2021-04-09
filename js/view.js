@@ -20,9 +20,15 @@ let renderView = {
     renderDetails(characterInfo) {
         home.containerInfo.innerHTML = '';
         
-        console.log(characterInfo.results[0].comics.items[0].name);
+        console.log(characterInfo.results[0].resourceURI);
 
         home.setDetails(characterInfo.results[0].id, characterInfo.results[0].name, characterInfo.results[0].description, characterInfo.results[0].thumbnail.path, characterInfo.results[0].thumbnail.extension, characterInfo.results[0].urls);
         home.paginationBtn('');
     },
+
+    renderFavs(list){
+        list.results.forEach((el) => {
+            home.setList(el.thumbnail.path, el.thumbnail.extension, el.name, el.id)
+        })
+    }
 }

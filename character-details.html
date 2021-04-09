@@ -34,7 +34,7 @@
                     </ul>
                     <form class="d-flex form-inline">
                         <!-- <form class="form-inline input-group pull-right"> -->
-                        <input type="text" id="searchInput" placeholder="Character Name" class="form-control pull-right"
+                        <input type="text" id="searchInput" placeholder="Ingrese el personaje" class="form-control pull-right"
                             onkeydown="home.searchCharacter(event)"
                             style="border-bottom-right-radius: 0%; border-top-right-radius: 0%; border-right-color: transparent;" />
                         <span class="btn pull-right" id="btnSearch"
@@ -52,7 +52,7 @@
         <div id="character-info" class="row">
             
         </div>
-        <div class="btn btn-group" onclick="">Agregar a favoritos</div>
+        <div class="btn btn-page btn-group" id="addFav" onclick="">Agregar a favoritos</div>
         <div id="pagination" class="btn-group" onclick="location.href='../index.html'"></div>
     </div>
     <footer>
@@ -60,12 +60,38 @@
             <div class="row">
                 <span class="col-md-8 footer-copyright" style="color: white;">Copyright Marvel 2021. All Rights Reserved</span>
                 <a class="col-md-4" href="index.html">
-                    <img src="img/logo-marvel.png" class="logo pull-right">
+                    <img src="img/logo-marvel.png" class="logo-footer">
                 </a>
             </div>
         </div>
     </footer>
+    <script>
+        document.getElementById("addFav").addEventListener("click", function (e) {
+            e.preventDefault();
+            // leemos el id
+            var newFav = {
+                id: window.localStorage.getItem('characterId'),
+            };
+            // console.log(newFav);
+            // leemos los favoritos del localStorage
+            var favs = localStorage.getItem("favs") || "[]";
+            favs = JSON.parse(favs);
+            console.log(favs);
 
+            // buscamos el producto en la lista de favs
+            var posLista = favs.find(element => element == newFav);
+            if (posLista > -1) {
+                // si está, lo quitamos
+                favs.splice(posLista, 1);
+            } else {
+                // si no está, lo añadimos
+                favs.push(newFav);
+            }
+
+            // guardamos la lista de favs 
+            localStorage.setItem("favs", JSON.stringify(favs));
+        });
+    </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"

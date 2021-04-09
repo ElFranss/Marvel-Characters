@@ -1,6 +1,5 @@
 /* rojo:#e62429;
 azul: #0b1625;
-azul shadow: #1c2a3f;
 */
 * {
 	margin: 0;
@@ -23,9 +22,7 @@ body{
 footer{
     background-color: #0b1625;
     position: relative;
-    /* background: #494c50; */
     padding: 40px 0px;
-    /* font-size: 14px; */
 }
 
 h1, h2, h3, h4, h5{
@@ -83,17 +80,21 @@ h1, h2, h3, h4, h5{
     position: relative;
 }
 
+.logo-footer{
+    height: auto;
+    width: 100%;
+    max-width: 190px;
+    max-height: 80px;
+    display: block;
+    float: right;
+}
+
 .logo{
     height: auto;
     width: 100%;
     max-width: 190px;
     max-height: 80px;
     display: block;
-    
-}
-
-.logo-footer{
-    float: right;
 }
 
 #btnSearch{
@@ -108,7 +109,7 @@ h1, h2, h3, h4, h5{
 }
 
 .hidden{
-    visibility: hidden;
+    display: none;
 }
 
 .pull-right{
@@ -164,11 +165,17 @@ h1, h2, h3, h4, h5{
     border: 1px solid #e62429;
     background: #e62429;
     color: #F0EFEC;
-    margin: 0 5px;
+    margin: 0 auto;
+    min-width: 160px;
 }
 
 .back-home{
+    min-width: 160px;
     margin: 20px;
+}
+
+.ext-link{
+    text-transform: capitalize;
 }
 
 #searchInput{
@@ -189,14 +196,6 @@ h1, h2, h3, h4, h5{
 
 }
 
-.hidden-md{
-    visibility: hidden;
-}
-
-.ext-links{
-
-}
-
 @media only screen and (max-width: 768px){
     #spinner{
         left: 44.5%;
@@ -207,7 +206,9 @@ h1, h2, h3, h4, h5{
         height: auto;
         width: unset;
         max-width: unset;
-        float: left;
+        margin: 0 auto;
+        display: block;
+        /* float: left; */
     }
 
     .character-box{
@@ -233,13 +234,28 @@ h1, h2, h3, h4, h5{
     .navbar-toggler, .navbar-light .navbar-toggler{
         background-color: #e62429;
         border: 1px solid #e62429;
+    }   
+
+    .footer-copyright{
+        display: block;
+        text-align: center;
     }
 
-    .hidden-md{
-        visibility: visible !important;
+    .btn-page{
+        width: 180px;
+        display: block;
     }
 
-    .hidden-xs{
-        visibility: hidden !important;
-    }    
+    .logo-footer{
+        float: none;
+        margin: 0 auto;
+    }
+
+    .favs-header{
+        margin-top: -27%;
+        border: 2px solid red;
+        position: relative;
+        text-align: center;
+        border-radius: 10px;
+    }
 }

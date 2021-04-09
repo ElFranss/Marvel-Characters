@@ -1,5 +1,6 @@
 //usamos el localStorage para guardar los favoritos
 localStorage.getItem("favs") === null && localStorage.setItem("favs", "[]");
+sessionStorage.setItem("offset", 0);
 //armamos la vista
 let home = {
     //status de la home
@@ -77,7 +78,7 @@ let home = {
         div.setAttribute("class", "col-md-2");
         // div.setAttribute('id', 'character')
         div.innerHTML =
-        `<div class="character-box" id="${id}" onclick="renderView.getId(this.id)">
+            `<div class="character-box" id="${id}" onclick="renderView.getId(this.id)">
             <img src="${img}.${ext}" alt= ${name} class="img-responsive">
             <div class="character-name">
                 <h4 class="character-text">${name}</h4>
@@ -85,23 +86,25 @@ let home = {
         </div>`
 
         this.characterBox.appendChild(div);
-        spinner.classList.add('hidden') ;
+        spinner.classList.add('hidden');
         spinnerBack.classList.add('hidden');
     },
 
     //armamos el detalle de personajes
-    setDetails(id ,name, desc, img, extension, urls, comics) {
+    setDetails(id ,name, desc, img, extension, urls, resourceURI) {
         spinnerBack.classList.remove('hidden');
         spinner.classList.remove('hidden');
         let divDescription = document.createElement('div');
         divDescription.setAttribute("class", "col-md-8")
 
         let divImage = document.createElement('div');
+        let divLinks = document.createElement('div');
         divImage.setAttribute("class", "card-body")
+        divLinks.setAttribute("class", "row")
 
         this.containerInfo.innerHTML = `
         <div class="col-md-4">
-            <img src="${img}.${extension}" class="card-img" character-id="${id}" alt="${name}">
+            <img src="${img}.${extension}" class="card-img" id="${id}" resourceURI="${resourceURI}"alt="${name}">
         </div>`
 
         divImage.innerHTML = `<h2 class="card-title">${name}</h2>`
@@ -110,18 +113,21 @@ let home = {
             divImage.innerHTML +=
                 `<div class="card-text"><h4>Descripción</h4>
                     <p class="card-text">${desc}</p><br/>
-                    <div class="">${comics}</div>
+                    <div class=""></div>
                 </div>`
         }
         //si tiene links los imprimimos
         if (urls.length > 0) {
             divImage.innerHTML += `<div class="card-text"><h4>Links relacionados</h4></div>`
-
+            // divLinks.innerHTML += `<div class="row">`
             urls.forEach(el => {
-                if (el.type != '') {
-                    divImage.innerHTML += `<a href="${el.url}" target="_blank" class="ext-links">${el.type}</a>`
+                // if (el.type != '') {
+                    divLinks.innerHTML += `
+                        <div class="col-md-4">
+                            <a href="${el.url}" target="_blank" class="btn btn-page back-home ext-link">${el.type}</a>
+                    <div>`
 
-                }
+                // }
             })
         }
         divDescription.appendChild(divImage);
@@ -133,13 +139,13 @@ let home = {
 }
 
 //eventos
-home.searchBtn.addEventListener('click', () => {
-    location.href = './index.html'
-    home.characterBox.innerHTML = ''
-    marvelData.fetchData();
-    home.searchInput.value = ''
-    home.paginationDiv.innerHTML = ''
-});
+// home.searchBtn.addEventListener('click', () => {
+//     location.href = './index.html'
+//     home.characterBox.innerHTML = ''
+//     marvelData.fetchData();
+//     home.searchInput.value = ''
+//     home.paginationDiv.innerHTML = ''
+// });
 
 home.paginationDiv.addEventListener('click', (e) => {
     home.characterBox.innerHTML = ''
