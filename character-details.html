@@ -31,11 +31,10 @@
                     <form class="d-flex form-inline">
                         <!-- <form class="form-inline input-group pull-right"> -->
                         <input type="text" id="searchInput" placeholder="Ingrese el personaje" class="form-control pull-right"
-                            onkeydown="home.searchCharacter(event)"
-                            style="border-bottom-right-radius: 0%; border-top-right-radius: 0%; border-right-color: transparent;" />
-                        <span class="btn pull-right" id="btnSearch"
-                            style="background-color: #fff; border-bottom-left-radius: 0%; border-top-left-radius: 0%; border-left-color: transparent;"><i
-                                class="fa fa-search"></i></span>
+                            onkeydown="home.searchCharacter(event)"/>
+                        <span class="btn pull-right" id="btnSearch" onclick="home.searchCharacterClick(event)"><i
+                                class="fa fa-search"></i>
+                        </span>
                         <!-- </form> -->
                     </form>
                 </div>
